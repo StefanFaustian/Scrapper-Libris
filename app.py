@@ -1,5 +1,6 @@
 import streamlit as stl
 import pandas as pd
+import plotly.express as px
 
 # Webpage's head tags
 stl.set_page_config(page_title="Book Prices Overview", page_icon="📖", layout="wide")
@@ -43,8 +44,15 @@ try:
     left_col, right_col = stl.columns([2, 1])
     with left_col:
         stl.subheader("Price Distribution")
-        # Line chart resets index so the graph looks continuous even after filtering
-        stl.line_chart(filtered_df["Price"].reset_index(drop=True))
+        
+        fig = px.line(
+            filtered_df, 
+            y="Price",
+            hover_data=['Title'],
+            markers=True
+        )
+        fig.update_xaxes(visible=False)
+        stl.plotly_chart(fig, use_container_width=True)
 
     with right_col:
         stl.subheader("Raw Data View")
