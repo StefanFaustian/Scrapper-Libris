@@ -20,7 +20,7 @@ if response.status_code == 200:
         writer = csv.writer(file)
         writer.writerow(["Title", "Price"])  # Heading of the table
 
-        for book in books[:8]:
+        for book in books[:20]:
             title_element = book.find("div", class_="item-title")
             title = title_element.text.strip() if title_element else "No title found"
             price_element = book.find("p", class_="price-reduced")
