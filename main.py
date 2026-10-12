@@ -28,7 +28,7 @@ with open("books_data.csv", "w", newline="", encoding="utf-8") as file:
             soup = BeautifulSoup(response.text, "html.parser")
             books = soup.find_all("div", class_="pr-history-item")
 
-            for book in books[:20]:
+            for book in books:
                 title_element = book.find("div", class_="item-title")
                 title = title_element.text.strip() if title_element else "No title found"
                 price_element = book.find("p", class_="price-reduced")
