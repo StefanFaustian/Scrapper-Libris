@@ -32,7 +32,7 @@ try:
     filtered_df = df.copy()
     filtered_df = filtered_df[filtered_df['Price'] <= selected_max_price]
     if search_query:
-        filtered_df = filtered_df[filtered_df['Title'].str.contains(search_query, case=False)]
+        filtered_df = filtered_df[filtered_df['Title'].str.contains(search_query.strip(), case=False)]
 
     stl.subheader("Market Overview")
     col1, col2, col3 = stl.columns(3)
